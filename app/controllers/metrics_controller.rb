@@ -6,8 +6,6 @@ class MetricsController < ApplicationController
     @start_date = params[:start_date] || 0
     @end_date = params[:end_date] || Time.now
 
-    logger.info "Start Date: #{@start_date}"
-
     @metrics = Metric.select(:name, :value, :created_at)
       .created_between(@start_date, @end_date)
 
